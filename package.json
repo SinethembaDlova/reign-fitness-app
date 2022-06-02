@@ -3,6 +3,18 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@babel/eslint-parser": "^7.18.2",
+    "babel-plugin-module-resolver": "^4.1.0",
+    "eslint": "^8.16.0",
+    "eslint-import-resolver-babel-module": "^5.3.1",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jest": "^26.4.6",
+    "eslint-plugin-module-resolver": "^1.4.0",
+    "eslint-plugin-react": "^7.30.0",
+    "eslint-plugin-react-hooks": "^4.5.0",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.0",
+    "prettier": "^2.6.2",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
@@ -12,6 +24,9 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "eslint": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
+    "prettier": "prettier \"*.js\" \"src/**/*.js\" --write",
+    "lint": "npm run prettier && npm run eslint",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -33,6 +48,12 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
+    ]
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write",
+      "eslint --fix"
     ]
   }
 }
