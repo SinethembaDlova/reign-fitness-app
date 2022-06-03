@@ -1,13 +1,13 @@
-// REDUX [ ACTIONS > INTERVIEW ACTIONS ] #######################################
+// REDUX [ ACTIONS >  MEMBERSHIP ] #############################################
 
 // 1. DEPENDENCIES +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 // 1.1. EXTERNAL DEPENDENCIES ..................................................
-
-import { createAction } from '@reduxjs/toolkit';
 // 1.1. END ....................................................................
 // 1.2. INTERNAL DEPENDENCIES ..................................................
+
 import { TYPE } from '../../constants';
+
 // 1.2. END ....................................................................
 
 // 1. END ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -17,27 +17,19 @@ import { TYPE } from '../../constants';
 export default {
   // 2.1. FETCH MEMBERSHIP .....................................................
 
-  fetchtMembershipActionBegin: createAction(
-    TYPE.MEMBERSHIP.FETCHING_MEMBERSHIP_BEGIN
-  ),
+  fetchtMembershipActionBegin: () => ({
+    type: TYPE.MEMBERSHIP.FETCHING_BEGIN
+  }),
 
-  fetchMembershipActiopSuccess: createAction(
-    TYPE.MEMBERSHIP.FETCHING_MEMBERSHIP_SUCEESS,
-    function prepare (payload) {
-      return {
-        payload
-      };
-    }
-  ),
+  fetchMembershipActiopSuccess: payload => ({
+    type: TYPE.MEMBERSHIP.FETCHING_SUCEESS,
+    payload
+  }),
 
-  fetchMembershipActionsError: createAction(
-    TYPE.MEMBERSHIP.FETCHING_MEMBERSHIP_ERROR,
-    function prepare (payload) {
-      return {
-        payload
-      };
-    }
-  )
+  fetchMembershipActionsError: payload => ({
+    type: TYPE.MEMBERSHIP.FETCHING_ERROR,
+    payload
+  })
 
   // 2.1. END ..................................................................
 };
