@@ -18,16 +18,16 @@ import { TYPE } from '../../constants';
 export default {
   // 2.1. FETCH MEMBERSHIPS ....................................................
 
-  fetchtMembershipsActionBegin: () => ({
+  fetchtMembershipsBegin: () => ({
     type: TYPE.MEMBERSHIPS.FETCHING_BEGIN
   }),
 
-  fetchMembershipsActiopSuccess: payload => ({
+  fetchMembershipsSuccess: payload => ({
     type: TYPE.MEMBERSHIPS.FETCHING_SUCEESS,
     payload
   }),
 
-  fetchMembershipsActionsError: payload => ({
+  fetchMembershipsError: payload => ({
     type: TYPE.MEMBERSHIPS.FETCHING_ERROR,
     payload
   })

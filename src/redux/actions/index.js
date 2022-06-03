@@ -1,6 +1,6 @@
 // REDUX [ ACTIONS ] ###########################################################
 
-export { default as membershipActions } from './membershipsAction';
-export { default as membershipsActions } from './membershipsActions';
+export { default as membershipActions } from './membership';
+export { default as membershipsActions } from './memberships';
 
 // END OF FILE #################################################################
