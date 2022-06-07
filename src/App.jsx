@@ -7,6 +7,7 @@
 import React from 'react';
 import {
   BrowserRouter as Router,
+  Navigate,
   Route,
   Routes
 } from 'react-router-dom';
@@ -38,7 +39,7 @@ function App () {
   return (
     <Router>
       <Routes>
-        <Route exact path="/" element={<h2> Hello Home</h2>}></Route>
+        <Route exact path="/" element={<Navigate to="/memberships" replace />}></Route>
         <Route
           exact
           path="/memberships"
