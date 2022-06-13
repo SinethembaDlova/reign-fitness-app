@@ -30,9 +30,27 @@ export default {
   fetchMembershipsError: payload => ({
     type: TYPE.MEMBERSHIPS.FETCHING_ERROR,
     payload
-  })
+  }),
 
   // 2.1. END ..................................................................
+
+  // 2.2. FETCH MEMBERSHIP .....................................................
+
+  fetchtMembershipBegin: () => ({
+    type: TYPE.MEMBERSHIP.FETCHING_BEGIN
+  }),
+
+  fetchMembershipSuccess: payload => ({
+    type: TYPE.MEMBERSHIP.FETCHING_SUCEESS,
+    payload
+  }),
+
+  fetchMembershipError: payload => ({
+    type: TYPE.MEMBERSHIP.FETCHING_ERROR,
+    payload
+  })
+
+  // 2.2. END ..................................................................
 };
 
 // 2. END ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
