@@ -15,13 +15,9 @@ export default {
 
     try {
       const res = await axios.get(path, {
-        method: 'GET',
         headers: {
-          'Access-Control-Allow-Origin': '*',
           'Content-Type': 'application/json'
-        },
-        withCredentials: true,
-        credentials: 'same-origin'
+        }
       });
       return res;
     } catch (error) {

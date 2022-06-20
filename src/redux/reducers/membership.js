@@ -26,15 +26,13 @@ const fetchMembershipSlice = createSlice({
     [membershipsThunk.fetchMembership.pending]: state => {
       state.status = 'loading';
     },
-    [membershipsThunk.fetchMembership.success]: (
-      state,
-      { payload }
-    ) => {
-      state.list = payload;
+    [membershipsThunk.fetchMembership.fulfilled]: (state, { payload }) => {
+      state.payload = payload.data;
       state.status = 'success';
     },
-    [membershipsThunk.fetchMembership.failed]: state => {
+    [membershipsThunk.fetchMembership.rejected]: (state, { error }) => {
       state.status = 'failed';
+      state.error = error;
     }
   }
 });

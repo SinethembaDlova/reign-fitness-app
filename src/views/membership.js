@@ -13,7 +13,10 @@ const Membership = () => {
 
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(membershipsThunk.fetchMembership('76e6e5e6-3e64-45a9-b522-51e8f3224c7e')
+    dispatch(
+      membershipsThunk.fetchMembership(
+        '76e6e5e6-3e64-45a9-b522-51e8f3224c7e'
+      )
     );
   }, [dispatch]);
 
@@ -22,7 +25,7 @@ const Membership = () => {
   // 2.2. RENDER ..............................................................
   return (
     <Fragment>
-        <h2>Hello Memberships</h2>
+      <h2>Hello Memberships</h2>
     </Fragment>
   );
 

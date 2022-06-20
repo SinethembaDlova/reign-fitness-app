@@ -10,19 +10,16 @@ import { default as membershipsApi } from '../../api/calls/memberships';
 export default {
   // 2.1. FETCH MEMBERSHIPS .....................................................
 
-  fetchMemberships: createAsyncThunk(
-    'MEMBERSHIPS/fetchMemberships',
-    async () => {
-      return membershipsApi.fetchMemberships();
-    }
-  ),
+  fetchMemberships: createAsyncThunk('MEMBERSHIPS', async () => {
+    return membershipsApi.fetchMemberships();
+  }),
 
   // 2.1. END ..................................................................
 
   // 2.1. FETCH MEMBERSHIP BY ID ...............................................
 
   fetchMembership: id =>
-    createAsyncThunk('MEMBERSHIP/fetchMembership', async () => {
+    createAsyncThunk('MEMBERSHIP', async () => {
       return membershipsApi.fetchMembershipById(id);
     })
   // 2.1. END ..................................................................

@@ -1,12 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
-import fetchMembershipSlice from './reducers/membership';
-import fetchMembershipsSlice from './reducers/memberships';
+import rootReducer from './reducers';
 
 const store = configureStore({
-  reducer: {
-    membership: fetchMembershipSlice,
-    memberships: fetchMembershipsSlice
-  }
+  reducer: rootReducer,
+  middleware: getDefaultMiddleware => getDefaultMiddleware()
 });
 
 export default store;

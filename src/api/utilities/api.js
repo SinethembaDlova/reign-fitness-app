@@ -8,7 +8,6 @@
 export default {
   axiosOptions: () => {
     return {
-      mode: 'cors',
       headers: {
         'Content-Type': 'application/json'
       }
