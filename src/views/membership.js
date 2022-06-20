@@ -1,33 +1,20 @@
-// VIEW [ MEMBERSHIPS ] ########################################################
+// VIEW [ MEMBERSHIP ] #########################################################
 
 // 1. DEPENDENCIES +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 import React, { Fragment, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
-import Table from '../components/Table';
 import { membershipsThunk } from '../redux/thunks';
 // 1. END ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 // 2. COMPONENT ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-const Memberships = () => {
+const Membership = () => {
   // 2.1. FUNCTIONS ............................................................
-
-  // const tableData = data => {
-  //   return data.map(item => ({
-  //     first_name: item.first_name,
-  //     last_name: item.last_name,
-  //     contract_type: item.contract_type,
-  //     is_active: item.is_active ? 'Active' : 'Inactive',
-  //     actions: (
-  //       <Link to={`/memberships/${item.id}`}> View Membership </Link>
-  //     )
-  //   }));
-  // };
 
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(membershipsThunk.fetchMemberships());
+    dispatch(membershipsThunk.fetchMembership('76e6e5e6-3e64-45a9-b522-51e8f3224c7e')
+    );
   }, [dispatch]);
 
   // 2.1. END ..................................................................
@@ -35,25 +22,7 @@ const Memberships = () => {
   // 2.2. RENDER ..............................................................
   return (
     <Fragment>
-      <h2>Hello Memberships</h2>
-      <Table
-        columnNames={['Name', 'Surname', 'Type', 'Status']}
-        data={[
-          {
-            firstname: 'Sinethemba',
-            lastname: 'Dlova',
-            status: 'Active',
-            membershipType: 'Reigner',
-            action: (
-              <Link to="/memberships/10112322">
-                {' '}
-                View Membership{' '}
-              </Link>
-            )
-          }
-        ]}
-      >
-      </Table>
+        <h2>Hello Memberships</h2>
     </Fragment>
   );
 
@@ -90,6 +59,6 @@ const Memberships = () => {
 // 4.2. END ....................................................................
 // 4. END ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-export default Memberships;
+export default Membership;
 
 // END OF FILE #################################################################

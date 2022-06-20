@@ -19,7 +19,7 @@ import membershipsThunk from '../thunks/memberships';
 
 const initialState = STATE.GENERIC;
 
-const  fetchMembershipSlice = createSlice({
+const fetchMembershipSlice = createSlice({
   name: 'MEMBERSHIP',
   initialState,
   extraReducers: {

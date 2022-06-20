@@ -16,7 +16,6 @@ export default {
     try {
       const res = await axios.get(path, {
         method: 'GET',
-        mode: 'no-cors',
         headers: {
           'Access-Control-Allow-Origin': '*',
           'Content-Type': 'application/json'

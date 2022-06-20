@@ -8,6 +8,7 @@ import {
   Route,
   Routes
 } from 'react-router-dom';
+import  Membership from './views/membership';
 import  Memberships from './views/memberships';
 // 1.1. END ....................................................................
 
@@ -43,7 +44,7 @@ function App () {
         <Route
           exact
           path="/memberships/:id"
-          element={<h2> Hello Memmbership</h2>}
+          element={<Membership />}
         >
         </Route>
         </Routes>

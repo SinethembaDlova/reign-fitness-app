@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import fetchMembershipSlice  from './reducers/membership';
+import fetchMembershipSlice from './reducers/membership';
 import fetchMembershipsSlice from './reducers/memberships';
 
 const store = configureStore({
