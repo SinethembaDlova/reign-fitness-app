@@ -7,7 +7,9 @@
 
 // 1.2. INTERNAL DEPENDENCIES ..................................................
 
-import { STATE, TYPE } from '../../constants';
+import { createSlice } from '@reduxjs/toolkit';
+import { STATE } from '../../constants';
+import membershipsThunk from '../thunks/memberships';
 
 // 1.2. END ....................................................................
 
@@ -15,30 +17,30 @@ import { STATE, TYPE } from '../../constants';
 
 // 2. REDUCERS +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-export default (state = STATE.GENERIC, { type, payload }) => {
-  switch (type) {
-    case TYPE.MEMBERSHIP.FETCHING_BEGIN:
-      return {
-        ...state,
-        status: 'fetching'
-      };
-    case TYPE.MEMBERSHIP.FETCHING_SUCEESS:
-      return {
-        ...state,
-        status: 'success',
-        payload
-      };
-    case TYPE.MEMBERSHIP.FETCHING_ERROR:
-      return {
-        ...state,
-        status: 'error',
-        payload
-      };
-    default:
-      return state;
+const initialState = STATE.GENERIC;
+
+const  fetchMembershipSlice = createSlice({
+  name: 'MEMBERSHIP',
+  initialState,
+  extraReducers: {
+    [membershipsThunk.fetchMembership.pending]: state => {
+      state.status = 'loading';
+    },
+    [membershipsThunk.fetchMembership.success]: (
+      state,
+      { payload }
+    ) => {
+      state.list = payload;
+      state.status = 'success';
+    },
+    [membershipsThunk.fetchMembership.failed]: state => {
+      state.status = 'failed';
+    }
   }
-};
+});
 
 // 2. END ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+export default fetchMembershipSlice;
 
 // END OF FILE #################################################################

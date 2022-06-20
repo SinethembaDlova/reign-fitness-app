@@ -16,8 +16,8 @@ export default {
   },
 
   url: endpoint => {
-    const default_endpoint = process.env.API;
-    return endpoint || default_endpoint;
+    const default_endpoint = process.env.REACT_APP_API;
+    return default_endpoint || endpoint;
   }
 };
 

@@ -1,11 +1,12 @@
-import { createStore, applyMiddleware } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
-import thunk from 'redux-thunk';
-import rootReducer from './reducers';
+import { configureStore } from '@reduxjs/toolkit';
+import fetchMembershipSlice  from './reducers/membership';
+import fetchMembershipsSlice from './reducers/memberships';
 
-const store = createStore(
-  rootReducer,
-  composeWithDevTools(applyMiddleware(thunk))
-);
+const store = configureStore({
+  reducer: {
+    membership: fetchMembershipSlice,
+    memberships: fetchMembershipsSlice
+  }
+});
 
 export default store;

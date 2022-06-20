@@ -10,11 +10,20 @@ import apiUtilities from '../utilities/api';
 export default {
   // 2.1. FETCH ALL MEMBERSHIPS ................................................
 
-  fetchMemberships: async endpoint => {
-    const path = `${apiUtilities.url(endpoint)}/memberships`;
+  fetchMemberships: async () => {
+    const path = `${apiUtilities.url()}/memberships`;
 
     try {
-      const res = await axios.get(path);
+      const res = await axios.get(path, {
+        method: 'GET',
+        mode: 'no-cors',
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Content-Type': 'application/json'
+        },
+        withCredentials: true,
+        credentials: 'same-origin'
+      });
       return res;
     } catch (error) {
       throw new Error(error);
@@ -26,9 +35,7 @@ export default {
   // 2.2. FETCH A MEMBERSHIP BY ID .............................................
 
   fetchMembershipById: async (endpoint, id) => {
-    const path = `${apiUtilities.url(
-      endpoint
-    )}/memberships?id=${id}`;
+    const path = `${apiUtilities.url()}/memberships?id=${id}`;
 
     try {
       const res = await axios.get(path);
@@ -46,10 +53,7 @@ export default {
     const path = `${apiUtilities.url(endpoint)}/memberships`;
 
     try {
-      const res = await axios.post(
-        path,
-        body
-      );
+      const res = await axios.post(path, body);
       return res;
     } catch (error) {
       throw new Error(error);

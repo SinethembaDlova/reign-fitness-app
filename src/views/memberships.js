@@ -1,8 +1,8 @@
 // VIEW [ MEMBERSHIPS ] ########################################################
 
 // 1. DEPENDENCIES +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-import React, { Fragment, useMemo } from 'react';
-import { connect } from 'react-redux';
+import React, { Fragment, useEffect } from 'react';
+import { useDispatch  } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Table from '../components/Table';
 import { membershipsThunk } from '../redux/thunks';
@@ -10,24 +10,25 @@ import { membershipsThunk } from '../redux/thunks';
 
 // 2. COMPONENT ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-const Memberships = ({ fetchMemberships, memberships }) => {
+const Memberships = () => {
   // 2.1. FUNCTIONS ............................................................
 
-  const tableData = data => {
-    return data.map(item => ({
-      first_name: item.first_name,
-      last_name: item.last_name,
-      contract_type: item.contract_type,
-      is_active: item.is_active ? 'Active' : 'Inactive',
-      actions: (
-        <Link to={`/memberships/${item.id}`}> View Membership </Link>
-      )
-    }));
-  };
+  // const tableData = data => {
+  //   return data.map(item => ({
+  //     first_name: item.first_name,
+  //     last_name: item.last_name,
+  //     contract_type: item.contract_type,
+  //     is_active: item.is_active ? 'Active' : 'Inactive',
+  //     actions: (
+  //       <Link to={`/memberships/${item.id}`}> View Membership </Link>
+  //     )
+  //   }));
+  // };
 
-  useMemo(() => {
-    fetchMemberships();
-  }, [fetchMemberships]);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(membershipsThunk.fetchMemberships());
+  }, [dispatch]);
 
   // 2.1. END ..................................................................
 
@@ -37,7 +38,20 @@ const Memberships = ({ fetchMemberships, memberships }) => {
       <h2>Hello Memberships</h2>
       <Table
         columnNames={['Name', 'Surname', 'Type', 'Status']}
-        data={tableData(memberships)}
+        data={[
+          {
+            firstname: 'Sinethemba',
+            lastname: 'Dlova',
+            status: 'Active',
+            membershipType: 'Reigner',
+            action: (
+              <Link to="/memberships/10112322">
+                {' '}
+                View Membership{' '}
+              </Link>
+            )
+          }
+        ]}
       >
       </Table>
     </Fragment>
@@ -58,24 +72,24 @@ const Memberships = ({ fetchMemberships, memberships }) => {
 
 // 4.1. MAP STATE TO PROPS .....................................................
 
-const mapProps = state => ({
-  memberships: state.memberships.data
-});
+// const mapProps = state => ({
+//   memberships: state.memberships.data
+// });
 
 // 4.1. END ....................................................................
 
 // 4.2. MAP DISPATCH TO PROPS ..................................................
 
-const mapDispatchToProps = dispatch => {
-  return {
-    fetchMemberships: () =>
-      dispatch(membershipsThunk.fetchMemberships())
-  };
-};
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     fetchMemberships: () =>
+//       dispatch(membershipsThunk.fetchMemberships())
+//   };
+// };
 
 // 4.2. END ....................................................................
 // 4. END ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-export default connect(mapProps, mapDispatchToProps)(Memberships);
+export default Memberships;
 
 // END OF FILE #################################################################
