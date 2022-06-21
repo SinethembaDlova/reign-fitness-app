@@ -8,6 +8,8 @@ import {
   Route,
   Routes
 } from 'react-router-dom';
+import './App.css';
+import Navbar from './components/Navbar';
 import  Membership from './views/membership';
 import  Memberships from './views/memberships';
 // 1.1. END ....................................................................
@@ -33,6 +35,7 @@ function App () {
 
   return (
       <Router>
+        <Navbar />
         <Routes>
           <Route exact path="/" element={<Navigate to="/memberships" replace />}></Route>
           <Route
