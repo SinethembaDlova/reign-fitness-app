@@ -1,11 +1,11 @@
 // VIEW [ MEMBERSHIPS ] ########################################################
 
 // 1. DEPENDENCIES +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-import React, { Fragment, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
-import Table from '../components/Table';
-import { membershipsThunk } from '../redux/thunks';
+import React, { Fragment } from 'react';
+// import { useDispatch, useSelector } from 'react-redux';
+// import { Link } from 'react-router-dom';
+// import Table from '../components/Table';
+// import { membershipsThunk } from '../redux/thunks';
 // 1. END ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 // 2. COMPONENT ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -25,10 +25,13 @@ const Memberships = () => {
   //   }));
   // };
 
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(membershipsThunk.fetchMemberships());
-  }, [dispatch]);
+  // const dispatch = useDispatch();
+  // useEffect(() => {
+  //   dispatch(membershipsThunk.fetchMemberships());
+  // }, [dispatch]);
+  // console.log('Hello');
+  // const { payload } = useSelector(state => state.payload);
+  // console.log('data: ', payload);
 
   // 2.1. END ..................................................................
 
@@ -36,24 +39,11 @@ const Memberships = () => {
   return (
     <Fragment>
       <h2>Hello Memberships</h2>
-      <Table
+      {/* <Table
         columnNames={['Name', 'Surname', 'Type', 'Status']}
-        data={[
-          {
-            firstname: 'Sinethemba',
-            lastname: 'Dlova',
-            status: 'Active',
-            membershipType: 'Reigner',
-            action: (
-              <Link to="/memberships/10112322">
-                {' '}
-                View Membership{' '}
-              </Link>
-            )
-          }
-        ]}
+        data={tableData(payload.data)}
       >
-      </Table>
+      </Table> */}
     </Fragment>
   );
 

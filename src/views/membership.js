@@ -12,6 +12,7 @@ const Membership = () => {
   // 2.1. FUNCTIONS ............................................................
 
   const dispatch = useDispatch();
+  //   console.log('PARAMS: ', this.match.params.id);
   useEffect(() => {
     dispatch(
       membershipsThunk.fetchMembership(
@@ -25,7 +26,7 @@ const Membership = () => {
   // 2.2. RENDER ..............................................................
   return (
     <Fragment>
-      <h2>Hello Memberships</h2>
+      <h2>Hello Membership</h2>
     </Fragment>
   );
 

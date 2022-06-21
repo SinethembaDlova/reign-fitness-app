@@ -7,10 +7,11 @@ import fetchMembershipsSlice from './memberships';
 // 1. END ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 // 2. COMBINE REDUCERS +++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-export default combineReducers({
+const rootReducer = combineReducers({
   membership: fetchMembershipSlice,
   memberships: fetchMembershipsSlice
 });
 // 2. END ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+export default rootReducer;
 // END OF FILE #################################################################

@@ -18,10 +18,9 @@ export default {
 
   // 2.1. FETCH MEMBERSHIP BY ID ...............................................
 
-  fetchMembership: id =>
-    createAsyncThunk('MEMBERSHIP', async () => {
-      return membershipsApi.fetchMembershipById(id);
-    })
+  fetchMembership: createAsyncThunk('MEMBERSHIP', async id => {
+    return membershipsApi.fetchMembershipById(id);
+  })
   // 2.1. END ..................................................................
 };
 

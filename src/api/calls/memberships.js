@@ -29,11 +29,15 @@ export default {
 
   // 2.2. FETCH A MEMBERSHIP BY ID .............................................
 
-  fetchMembershipById: async (endpoint, id) => {
+  fetchMembershipById: async id => {
     const path = `${apiUtilities.url()}/memberships?id=${id}`;
 
     try {
-      const res = await axios.get(path);
+      const res = await axios.get(path, {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
       return res;
     } catch (error) {
       throw new Error(error);
