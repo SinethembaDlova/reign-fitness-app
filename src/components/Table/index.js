@@ -2,6 +2,7 @@
 
 // 1. DEPENDENCIES +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 import React from 'react';
+import { StyledTable } from './index.style';
 // 1. END ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 // 2. COMPONENT ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -15,7 +16,7 @@ const Table = ({ columnNames, data }) => {
   return (
     <div>
       {data.length > 0 && (
-        <table cellSpacing="0">
+        <StyledTable cellSpacing="0">
           <thead>
             <tr>
               {columnNames.map((headerName, index) => {
@@ -41,7 +42,7 @@ const Table = ({ columnNames, data }) => {
               );
             })}
           </tbody>
-        </table>
+        </StyledTable>
       )}
     </div>
   );

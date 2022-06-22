@@ -3,8 +3,10 @@
 // 1. DEPENDENCIES +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 import React, { Fragment } from 'react';
 // import { useDispatch, useSelector } from 'react-redux';
-// import { Link } from 'react-router-dom';
-// import Table from '../components/Table';
+import { Link } from 'react-router-dom';
+import Button from '../components/Button';
+import Container from '../components/Container';
+import Table from '../components/Table';
 // import { membershipsThunk } from '../redux/thunks';
 // 1. END ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -38,12 +40,33 @@ const Memberships = () => {
   // 2.2. RENDER ..............................................................
   return (
     <Fragment>
-      <h2>Hello Memberships</h2>
-      {/* <Table
-        columnNames={['Name', 'Surname', 'Type', 'Status']}
-        data={tableData(payload.data)}
-      >
-      </Table> */}
+      <h1>Memberships</h1>
+      <Link to="/memberships/create"> <Button type="submit">Create Membership</Button> </Link>
+      <Container>
+        <Table
+          columnNames={['First Name', 'Last Name', 'Email Address', 'Contract Type', 'Status', 'Action']}
+          data={[
+            {
+              first_name: 'Sinethemba',
+              last_name: 'Dlova',
+              email: 'dSinethemba@gmail.com',
+              type: 'Student',
+              active: 'Active',
+              actions: <Link to="/memberships/1024232023432"> View Membership </Link>
+            },
+            {
+              first_name: 'Dame',
+              last_name: 'Dash',
+              email: 'damedashpunk@gmail.com',
+              type: 'Reigner',
+              active: 'Inactive',
+              actions: <Link to="/memberships/14342023432"> View Membership </Link>
+            }
+          ]}
+        >
+        </Table>
+      </Container>
+      <Container />
     </Fragment>
   );
 

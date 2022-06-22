@@ -1,19 +1,23 @@
-// CONTAINER ###################################################################
+// BUTTON ######################################################################
 
 // 1. DEPENDENCIES +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 import React from 'react';
-import { PageContainer } from './index.style';
+import { ButtonCointainer, CustomButton } from './index.style';
 // 1. END ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 // 2. COMPONENT ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-const Container = ({ children }) => {
+const Button = ({ children, ...props }) => {
   // 2.1. FUNCTIONS ............................................................
   // 2.1. END ..................................................................
 
   // 2.2. RENDER COMPONENT .....................................................
 
-  return <PageContainer> {children}</PageContainer>;
+  return (
+    <ButtonCointainer>
+        <CustomButton {...props}>{children}</CustomButton>;
+    </ButtonCointainer>
+  );
 
   // 2.2. END ..................................................................
 };
@@ -24,6 +28,6 @@ const Container = ({ children }) => {
 
 // 3. END ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-export default Container;
+export default Button;
 
 // END OF FILE #################################################################

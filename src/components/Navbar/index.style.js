@@ -14,13 +14,17 @@ import styled from 'styled-components';
 export const NavbarContainer = styled.nav`
   width: 100%;
   height: ${props => (props.extendNavbar ? '100vh' : '65px')};
-  background-color: black;
+  background-color: #1635fc;
   display: flex;
   flex-direction: column;
   @media (min-width: 700px) {
     height: 65px;
   }
-  box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-weight: bold;
+  border-radius: 2px;
+  margin-bottom: 1%;
 `;
 // 3.1 END +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -37,7 +41,7 @@ export const RightContainer = styled.div`
   flex: 70%;
   display: flex;
   justify-content: flex-end;
-  padding-right: 50px;
+  padding-right: 5%;
   align-items: center;
 `;
 // 3.3 END +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -58,7 +62,7 @@ export const NavbarLinkContainer = styled.div`
 // 3.6 NAVBAR LINK +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 export const NavbarLink = styled(Link)`
   color: white;
-  font-size: x-large;
+  font-size: medium;
   font-family: Arial, Helvetica, sans-serif;
   text-decoration: none;
   margin: 10px;

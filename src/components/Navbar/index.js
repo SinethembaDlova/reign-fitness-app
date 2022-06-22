@@ -34,10 +34,10 @@ const Navbar = () => {
         </LeftContainer>
         <RightContainer>
           <NavbarLinkContainer>
-            <NavbarLink to="/"> Memberships</NavbarLink>
-            <NavbarLink to="/products"> Clubs</NavbarLink>
-            <NavbarLink to="/contact"> Contact Us</NavbarLink>
-            <NavbarLink to="/about"> About Us</NavbarLink>
+            <NavbarLink to="/"> MEMBERSHIPS</NavbarLink>
+            <NavbarLink to="/products"> CLUBS</NavbarLink>
+            <NavbarLink to="/about"> ABOUT US</NavbarLink>
+            <NavbarLink to="/contact"> CONTACT US</NavbarLink>
             <OpenLinksButton
               onClick={() => {
                 setExtendNavbar(curr => !curr);

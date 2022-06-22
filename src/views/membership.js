@@ -3,6 +3,7 @@
 // 1. DEPENDENCIES +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 import React, { Fragment, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import Container from '../components/Container';
 import { membershipsThunk } from '../redux/thunks';
 // 1. END ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -26,6 +27,7 @@ const Membership = () => {
   // 2.2. RENDER ..............................................................
   return (
     <Fragment>
+      <Container />
       <h2>Hello Membership</h2>
     </Fragment>
   );

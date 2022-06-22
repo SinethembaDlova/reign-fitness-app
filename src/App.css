@@ -3,6 +3,15 @@
 }
 
 body {
+    background-color: #d1d7db;
+    font-family: 'Open Sans Condensed', sans-serif;
     margin: 0;
     padding: 0;
 }
+
+* {
+    box-sizing: border-box;
+  }
+  h1 {
+    margin:0% 10% 1% 10%;
+  }
