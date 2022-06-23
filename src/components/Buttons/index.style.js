@@ -27,7 +27,6 @@ const defaultButton = css`
     background-color: #4169e1;
     color: white;
     border: 5px solid #1635fc;
-
   }
 `;
 
@@ -52,11 +51,19 @@ export const CustomButton = styled.button`
 `;
 // 3.2 END +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-// 3.3. BUTTON CONTAINER..........................................................
+// 3.3. BUTTON CONTAINER........................................................
 export const ButtonCointainer = styled.div`
   display: flex;
   justify-content: flex-end;
   margin: 0% 10% 1% 10%;
+`;
+// 3.3 END +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+// 3.3. BUTTONs CONTAINER........................................................
+export const ButtonsCointainer = styled.div`
+  display: flex;
+  flex-direction: initial	
+  justify-content: flex-end;
 `;
 // 3.3 END +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 

@@ -1,4 +1,4 @@
-// ARCHITECT-FORMS [ FIELD > STYLE ] ###########################################
+// FORM COINTAINERS ############################################################
 
 // 1. DEPENDENCIES +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -18,15 +18,10 @@ import styled from 'styled-components';
 
 // 3. STYLES +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-// 3.1. MAIN CONTAINER .........................................................
+// 3.1. FORM CONTAINER .........................................................
 
-export const PageContainer = styled.section`
-  height: 100%;
-  padding: 20px 80px;
-  background-color: white;
-  color: black
-  padding-right: 50px;
-  margin:  0% 10% 1% 10%;
+export const FormContainer = styled.section`
+  width: 100%;
 `;
 
 // 3. END ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

@@ -16,7 +16,7 @@ export const NavbarContainer = styled.nav`
   height: ${props => (props.extendNavbar ? '100vh' : '65px')};
   background-color: #1635fc;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   @media (min-width: 700px) {
     height: 65px;
   }

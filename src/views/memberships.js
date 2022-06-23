@@ -3,8 +3,8 @@
 // 1. DEPENDENCIES +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 import React, { Fragment } from 'react';
 // import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
-import Button from '../components/Button';
+import { Link, useNavigate } from 'react-router-dom';
+import Button from '../components/Buttons/Button';
 import Container from '../components/Container';
 import Table from '../components/Table';
 // import { membershipsThunk } from '../redux/thunks';
@@ -15,6 +15,10 @@ import Table from '../components/Table';
 const Memberships = () => {
   // 2.1. FUNCTIONS ............................................................
 
+  const navigate = useNavigate();
+  const routeChange = path => {
+    navigate(path);
+  };
   // const tableData = data => {
   //   return data.map(item => ({
   //     first_name: item.first_name,
@@ -41,10 +45,12 @@ const Memberships = () => {
   return (
     <Fragment>
       <h1>Memberships</h1>
-      <Link to="/memberships/create">
-        {' '}
-        <Button type="submit">Create Membership</Button>{' '}
-      </Link>
+      <Button
+        type="button"
+        onClick={() => routeChange('/memberships/create')}
+      >
+        Create Membership
+      </Button>
       <Container>
         <Table
           columnNames={[
