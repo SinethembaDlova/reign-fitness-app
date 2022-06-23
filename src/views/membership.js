@@ -3,6 +3,8 @@
 // 1. DEPENDENCIES +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 import React, { Fragment, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
+import Button from '../components/Button';
 import Container from '../components/Container';
 import FormInput from '../components/FormInput';
 import { InputContainer } from '../components/FormInput/index.style';
@@ -32,28 +34,84 @@ const Membership = () => {
       <h1>Membership</h1>
       <Container>
         <form onSubmit={() => console.log('Submiting')}>
-        <InputContainer>
-        <FormInput
-            name="first name"
-            type="first name"
-            handleChange={() => console.log('Changings first name')}
-            value="Sinethemba"
-            label="first name"
-            required
-          />
-          <FormInput
-            name="last name"
-            type="last name"
-            handleChange={() => console.log('Changings first name')}
-            value="Dlova"
-            label="last name"
-            required
-          />
-        </InputContainer>
-          {/* <ButtonsBarContainer>
-            <Button type="submit"> Sign in </Button>
-            <Button onClick={signInWithGoogle}>Sign in with Google</Button>
-          </ButtonsBarContainer> */}
+          <InputContainer>
+            <FormInput
+              name="first_name"
+              type="text"
+              handleChange={() => console.log('Changings first name')}
+              value="Sinethemba"
+              label="First Name"
+              required
+            />
+            <FormInput
+              name="last_name"
+              type="text"
+              handleChange={() => console.log('Changings first name')}
+              value="Dlova"
+              label="Last Name"
+              required
+            />
+          </InputContainer>
+          <InputContainer>
+            <FormInput
+              name="phone_number"
+              type="text"
+              handleChange={() => console.log('Changings first name')}
+              value="0811232193"
+              label="Phone Number"
+              required
+            />
+            <FormInput
+              name="email"
+              type="text"
+              handleChange={() => console.log('Changings first name')}
+              value="dSinethemba@gmail.com"
+              label="Email Address"
+              required
+            />
+          </InputContainer>
+          <InputContainer>
+            <FormInput
+              name="Payment Type"
+              type="text"
+              handleChange={() => console.log('Changings first name')}
+              value="Card"
+              label="Payment Type"
+              required
+            />
+            <FormInput
+              name="Bank Account"
+              type="text"
+              handleChange={() => console.log('Changings first name')}
+              value="923423443423"
+              label="Bank Account"
+              required
+            />
+          </InputContainer>
+          <InputContainer>
+            <FormInput
+              name="Contact Type"
+              type="text"
+              handleChange={() => console.log('Changings first name')}
+              value="Student"
+              label="Contract Type"
+              required
+            />
+            <FormInput
+              name="amount"
+              type="number"
+              handleChange={() => console.log('Changings first name')}
+              value="500"
+              label="Amount"
+              required
+            />
+          </InputContainer>
+          <Link to="/memberships/create">
+            {' '}
+              <Button type="submit">Edit</Button>
+            {' '}
+          </Link>
+
         </form>
       </Container>
     </Fragment>

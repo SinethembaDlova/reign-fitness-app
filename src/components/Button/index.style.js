@@ -13,51 +13,27 @@ import styled, { css } from 'styled-components';
 
 // 3.1. DEFAULT BUTTON .........................................................
 const defaultButton = css`
-  background: #1635fc;
+  background: #081b4b;
   border-radius: 3px;
-  border: 5px solid #1635fc;
+  border: 5px solid #081b4b;
   color: white;
   margin: 0 1em;
   padding: 0.25em 1em;
   width: fit-content;
   align-items: center;
-  margin: 0% 10% 1% 10%;
   display: flex;
-  justify-content: flex-end;
 
   &:hover {
-    background-color: white;
-    color: black;
-    border: 1px solid black;
+    background-color: #4169e1;
+    color: white;
+    border: 5px solid #1635fc;
+
   }
 `;
 
 // 3.1 END +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-// 3.2. INVERTED BUTTON  .......................................................
-
-const invertedButton = css`
-  background-color: white;
-  color: black;
-  border: 1px solid black;
-
-  &:hover {
-    background-color: black;
-    color: white;
-    border: none;
-  }
-`;
-
-// 3.2 END +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-// 3.3. FETCH BUTTON STYLES ....................................................
-const fetchButtonStyles = props => {
-  return props.inverted ? invertedButton : defaultButton;
-};
-
-// 3.3 END +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-// 3.4. CUSTOM BUTTON ..........................................................
+// 3.2 CUSTOM BUTTON ..........................................................
 export const CustomButton = styled.button`
   min-width: 165px;
   width: auto;
@@ -72,16 +48,16 @@ export const CustomButton = styled.button`
   cursor: pointer;
   display: flex;
 
-  ${fetchButtonStyles}
+  ${defaultButton}
 `;
-// 3.4 END +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// 3.2 END +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-// 3.5. BUTTON CONTAINER..........................................................
+// 3.3. BUTTON CONTAINER..........................................................
 export const ButtonCointainer = styled.div`
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-end;
+  margin: 0% 10% 1% 10%;
 `;
-// 3.5 END +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// 3.3 END +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 // END OF FILE #################################################################
