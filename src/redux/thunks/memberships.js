@@ -2,7 +2,7 @@
 
 // 1. DEPENDENCIES +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { default as membershipsApi } from '../../api/calls/memberships';
+import { fetchMembershipsBegin, fetchMembershipsSuccess, fetchMembershipsError } from '../../api/calls/memberships';
 // 1. END ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 // 2. THUNKS +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -10,9 +10,15 @@ import { default as membershipsApi } from '../../api/calls/memberships';
 export default {
   // 2.1. FETCH MEMBERSHIPS .....................................................
 
-  fetchMemberships: createAsyncThunk('MEMBERSHIPS', async () => {
-    return membershipsApi.fetchMemberships();
-  }),
+  fetchMemberships: () => async dispatch => {
+    dispatch(fetchMembershipsBegin());
+    try {
+      const memberships = await membershipsApi.fetchMemberships();
+      return dispatch(fetchMembershipsSuccess(memberships))
+    } catch (error) {
+      return dispatch(fetchMembershipsError(error))
+    }
+  },
 
   // 2.1. END ..................................................................
 

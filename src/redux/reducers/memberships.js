@@ -10,24 +10,18 @@ import membershipsThunk from '../thunks/memberships';
 
 const initialState = STATE.GENERIC;
 
-const fetchMembershipsSlice = createSlice({
-  name: 'MEMBERSHIPS',
+const fetchMemberships = createSlice({
+  name: 'memberships',
   initialState,
-  extraReducers: {
-    [membershipsThunk.fetchMemberships.pending]: state => {
+  reducers: {
+    fetchMembershipsSuccess: state => {
       state.status = 'loading';
     },
-    [membershipsThunk.fetchMemberships.fulfilled]: (
-      state,
-      { payload }
-    ) => {
-      state.payload = payload.data;
+    fetchMembershipsSuccess: ( state, { payload }) => {
+      state.data = payload.data;
       state.status = 'success';
     },
-    [membershipsThunk.fetchMemberships.rejected]: (
-      state,
-      { error }
-    ) => {
+    fetchMembershipsError: (state, { error }) => {
       state.status = 'failed';
       state.error = error;
     }
@@ -35,5 +29,5 @@ const fetchMembershipsSlice = createSlice({
 });
 
 // 2. END ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-export default fetchMembershipsSlice.reducer;
+export default fetchMemberships.reducer;
 // END OF FILE #################################################################
