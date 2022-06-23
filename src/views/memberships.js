@@ -41,10 +41,20 @@ const Memberships = () => {
   return (
     <Fragment>
       <h1>Memberships</h1>
-      <Link to="/memberships/create"> <Button type="submit">Create Membership</Button> </Link>
+      <Link to="/memberships/create">
+        {' '}
+        <Button type="submit">Create Membership</Button>{' '}
+      </Link>
       <Container>
         <Table
-          columnNames={['First Name', 'Last Name', 'Email Address', 'Contract Type', 'Status', 'Action']}
+          columnNames={[
+            'First Name',
+            'Last Name',
+            'Email Address',
+            'Contract Type',
+            'Status',
+            'Action'
+          ]}
           data={[
             {
               first_name: 'Sinethemba',
@@ -52,7 +62,12 @@ const Memberships = () => {
               email: 'dSinethemba@gmail.com',
               type: 'Student',
               active: 'Active',
-              actions: <Link to="/memberships/1024232023432"> View Membership </Link>
+              actions: (
+                <Link to="/memberships/1024232023432">
+                  {' '}
+                  View Membership{' '}
+                </Link>
+              )
             },
             {
               first_name: 'Dame',
@@ -60,7 +75,12 @@ const Memberships = () => {
               email: 'damedashpunk@gmail.com',
               type: 'Reigner',
               active: 'Inactive',
-              actions: <Link to="/memberships/14342023432"> View Membership </Link>
+              actions: (
+                <Link to="/memberships/14342023432">
+                  {' '}
+                  View Membership{' '}
+                </Link>
+              )
             }
           ]}
         >

@@ -1,22 +1,33 @@
-// BUTTON ######################################################################
+// FORM INPUT ##################################################################
 
 // 1. DEPENDENCIES +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 import React from 'react';
-import { ButtonCointainer, CustomButton } from './index.style';
+import {
+  GroupContainer,
+  FormInputContainer,
+  FormInputLabel
+} from './index.style';
 // 1. END ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 // 2. COMPONENT ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-const Button = ({ children, ...props }) => {
+const FormInput = ({ handleChange, label, ...props }) => {
   // 2.1. FUNCTIONS ............................................................
   // 2.1. END ..................................................................
 
   // 2.2. RENDER COMPONENT .....................................................
 
   return (
-    <ButtonCointainer>
-      <CustomButton {...props}>{children}</CustomButton>;
-    </ButtonCointainer>
+    <GroupContainer>
+      <FormInputContainer onChange={handleChange} {...props} />
+      {label ? (
+        <FormInputLabel
+          className={props.value.length ? 'shrink' : ''}
+        >
+          {label}
+        </FormInputLabel>
+      ) : null}
+    </GroupContainer>
   );
 
   // 2.2. END ..................................................................
@@ -28,6 +39,6 @@ const Button = ({ children, ...props }) => {
 
 // 3. END ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-export default Button;
+export default FormInput;
 
 // END OF FILE #################################################################

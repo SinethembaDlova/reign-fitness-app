@@ -21,10 +21,10 @@ const defaultButton = css`
   padding: 0.25em 1em;
   width: fit-content;
   align-items: center;
-  margin:0% 10% 1% 10%;
+  margin: 0% 10% 1% 10%;
   display: flex;
   justify-content: flex-end;
-  
+
   &:hover {
     background-color: white;
     color: black;
@@ -78,9 +78,9 @@ export const CustomButton = styled.button`
 
 // 3.5. BUTTON CONTAINER..........................................................
 export const ButtonCointainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content:space-between;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 `;
 // 3.5 END +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 

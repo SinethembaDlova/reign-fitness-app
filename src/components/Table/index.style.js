@@ -2,19 +2,20 @@ import styled from 'styled-components';
 
 export const StyledTable = styled.table`
   border-collapse: collapse;
-  margin: 30px ;
+  margin: 30px;
   font-size: 1em;
   min-width: 500px;
   align-items: center;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
- 
+
   thead tr {
-    background-color: #009879;
+    background-color: #081b4b;
     color: #ffffff;
     text-align: left;
   }
 
-  th, td {
+  th,
+  td {
     padding: 18px 18px;
   }
 

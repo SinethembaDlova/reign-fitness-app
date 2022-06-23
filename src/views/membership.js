@@ -4,6 +4,8 @@
 import React, { Fragment, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import Container from '../components/Container';
+import FormInput from '../components/FormInput';
+import { InputContainer } from '../components/FormInput/index.style';
 import { membershipsThunk } from '../redux/thunks';
 // 1. END ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -27,8 +29,33 @@ const Membership = () => {
   // 2.2. RENDER ..............................................................
   return (
     <Fragment>
-      <Container />
-      <h2>Hello Membership</h2>
+      <h1>Membership</h1>
+      <Container>
+        <form onSubmit={() => console.log('Submiting')}>
+        <InputContainer>
+        <FormInput
+            name="first name"
+            type="first name"
+            handleChange={() => console.log('Changings first name')}
+            value="Sinethemba"
+            label="first name"
+            required
+          />
+          <FormInput
+            name="last name"
+            type="last name"
+            handleChange={() => console.log('Changings first name')}
+            value="Dlova"
+            label="last name"
+            required
+          />
+        </InputContainer>
+          {/* <ButtonsBarContainer>
+            <Button type="submit"> Sign in </Button>
+            <Button onClick={signInWithGoogle}>Sign in with Google</Button>
+          </ButtonsBarContainer> */}
+        </form>
+      </Container>
     </Fragment>
   );
 
