@@ -20,8 +20,9 @@ const defaultButton = css`
   margin: 0 1em;
   padding: 0.25em 1em;
   width: fit-content;
-  align-items: center;
-  display: flex;
+  // align-items: center;
+  text-align: center;
+  // display: flex;
 
   &:hover {
     background-color: #4169e1;
@@ -34,36 +35,30 @@ const defaultButton = css`
 
 // 3.2 CUSTOM BUTTON ..........................................................
 export const CustomButton = styled.button`
-  min-width: 165px;
-  width: auto;
+  min-width: 120px;
   height: 50px;
-  letter-spacing: 0.5px;
-  line-height: 50px;
   padding: 0 35px 0 35px;
   font-size: 15px;
   text-transform: uppercase;
   font-family: 'Open Sans Condensed';
   font-weight: bolder;
   cursor: pointer;
-  display: flex;
-
+  
   ${defaultButton}
 `;
 // 3.2 END +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 // 3.3. BUTTON CONTAINER........................................................
 export const ButtonCointainer = styled.div`
-  display: flex;
-  justify-content: flex-end;
   margin: 0% 10% 1% 10%;
 `;
 // 3.3 END +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 // 3.3. BUTTONs CONTAINER........................................................
-export const ButtonsCointainer = styled.div`
+export const ButtonsContainer = styled.div`
   display: flex;
-  flex-direction: initial	
   justify-content: flex-end;
+  margin: 0 25px 0 10px;
 `;
 // 3.3 END +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 

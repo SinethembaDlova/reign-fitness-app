@@ -3,31 +3,40 @@
 // 1. DEPENDENCIES +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 import { createSlice } from '@reduxjs/toolkit';
 import { STATE } from '../../constants';
-import membershipsThunk from '../thunks/memberships';
+import { membershipsThunk } from '../thunks';
 // 1. END ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 // 2. REDUCERS +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 const initialState = STATE.GENERIC;
 
-const fetchMemberships = createSlice({
+const fetchMembershipsSlice = createSlice({
   name: 'memberships',
   initialState,
-  reducers: {
-    fetchMembershipsSuccess: state => {
-      state.status = 'loading';
-    },
-    fetchMembershipsSuccess: ( state, { payload }) => {
-      state.data = payload.data;
-      state.status = 'success';
-    },
-    fetchMembershipsError: (state, { error }) => {
-      state.status = 'failed';
-      state.error = error;
-    }
+  extraReducers: builder => {
+    builder.addCase(
+      membershipsThunk.fetchMemberships.pending,
+      state => {
+        state.status = 'loading';
+      }
+    ),
+      builder.addCase(
+        membershipsThunk.fetchMemberships.fulfilled,
+        (state, { payload }) => {
+          state.payload = payload.data;
+          state.status = 'success';
+        }
+      ),
+      builder.addCase(
+        membershipsThunk.fetchMemberships.rejected,
+        (state, { error }) => {
+          state.status = 'failed';
+          state.error = error;
+        }
+      );
   }
 });
 
 // 2. END ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-export default fetchMemberships.reducer;
+export default fetchMembershipsSlice.reducer;
 // END OF FILE #################################################################

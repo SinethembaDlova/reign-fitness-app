@@ -31,7 +31,7 @@ export const GroupContainer = styled.div`
     letter-spacing: 0.3em;
   }
   display: flex;
-  width: 50%
+  width: 50%;
 `;
 // 3.2 END +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -50,7 +50,6 @@ export const FormInputContainer = styled.input`
   margin: 25px 0;
   &:hover {
     border: 2px solid #009879;
-
   }
   &:focus {
     outline: none;
@@ -82,8 +81,8 @@ export const FormInputLabel = styled.label`
 // 3.5. iNPUT CONTAINER ........................................................
 
 export const InputContainer = styled.div`
- display: flex;
- justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 `;
 // 3.5 END +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // END OF FILE #################################################################

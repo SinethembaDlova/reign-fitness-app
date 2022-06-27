@@ -2,7 +2,7 @@
 
 // 1. DEPENDENCIES +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 import React from 'react';
-import { ButtonCointainer, CustomButton } from './index.style';
+import { CustomButton } from './index.style';
 // 1. END ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 // 2. COMPONENT ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -13,11 +13,7 @@ const Button = ({ children, ...props }) => {
 
   // 2.2. RENDER COMPONENT .....................................................
 
-  return (
-    <ButtonCointainer>
-      <CustomButton {...props}>{children}</CustomButton>;
-    </ButtonCointainer>
-  );
+  return <CustomButton {...props}>{children}</CustomButton>;
 
   // 2.2. END ..................................................................
 };

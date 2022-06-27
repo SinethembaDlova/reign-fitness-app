@@ -3,7 +3,7 @@
 // 1. DEPENDENCIES +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 import React from 'react';
 import Button from './Button';
-import { ButtonsCointainer } from './index.style';
+import { ButtonsContainer } from './index.style';
 // 1. END ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 // 2. COMPONENT ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -15,10 +15,10 @@ const SaveCancelButton = () => {
   // 2.2. RENDER COMPONENT .....................................................
 
   return (
-    <ButtonsCointainer>
+    <ButtonsContainer>
       <Button type="button">Cancel</Button>
       <Button type="button">Save</Button>
-    </ButtonsCointainer>
+    </ButtonsContainer>
   );
 
   // 2.2. END ..................................................................

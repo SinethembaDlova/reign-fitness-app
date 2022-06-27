@@ -1,13 +1,14 @@
 // VIEW [ MEMBERSHIPS ] ########################################################
 
 // 1. DEPENDENCIES +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-import React, { Fragment } from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
+import React, { Fragment, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import Button from '../components/Buttons/Button';
-import Container from '../components/Container';
-import Table from '../components/Table';
-// import { membershipsThunk } from '../redux/thunks';
+import Button from '../../components/Buttons/Button';
+import Container from '../../components/Container';
+import Table from '../../components/Table';
+import { membershipsThunk } from '../../redux/thunks';
+import { ButtonCointainer } from './index.style';
 // 1. END ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 // 2. COMPONENT ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -31,13 +32,10 @@ const Memberships = () => {
   //   }));
   // };
 
-  // const dispatch = useDispatch();
-  // useEffect(() => {
-  //   dispatch(membershipsThunk.fetchMemberships());
-  // }, [dispatch]);
-  // console.log('Hello');
-  // const { payload } = useSelector(state => state.payload);
-  // console.log('data: ', payload);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(membershipsThunk.fetchMemberships());
+  }, [dispatch]);
 
   // 2.1. END ..................................................................
 
@@ -45,12 +43,14 @@ const Memberships = () => {
   return (
     <Fragment>
       <h1>Memberships</h1>
-      <Button
-        type="button"
-        onClick={() => routeChange('/memberships/create')}
-      >
-        Create Membership
-      </Button>
+      <ButtonCointainer>
+        <Button
+          type="button"
+          onClick={() => routeChange('/memberships/create')}
+        >
+          Create Membership
+        </Button>
+      </ButtonCointainer>
       <Container>
         <Table
           columnNames={[

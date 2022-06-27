@@ -3,9 +3,9 @@
 // 1. DEPENDENCIES +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 import React, { Fragment, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import Container from '../components/Container';
-import MembershipForm from '../components/Forms/MembershipForm';
-import { membershipsThunk } from '../redux/thunks';
+import Container from '../../components/Container';
+import MembershipForm from '../../components/Forms/MembershipForm';
+import { membershipsThunk } from '../../redux/thunks';
 // 1. END ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 // 2. COMPONENT ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -14,7 +14,6 @@ const Membership = () => {
   // 2.1. FUNCTIONS ............................................................
 
   const dispatch = useDispatch();
-  //   console.log('PARAMS: ', this.match.params.id);
   useEffect(() => {
     dispatch(
       membershipsThunk.fetchMembership(
