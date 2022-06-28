@@ -43,7 +43,7 @@ export const CustomButton = styled.button`
   font-family: 'Open Sans Condensed';
   font-weight: bolder;
   cursor: pointer;
-  
+
   ${defaultButton}
 `;
 // 3.2 END +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

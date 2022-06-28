@@ -20,29 +20,32 @@ import membershipsThunk from '../thunks/memberships';
 const initialState = STATE.GENERIC;
 
 const fetchMembershipSlice = createSlice({
-  name: 'MEMBERSHIP',
+  name: 'membership',
   initialState,
-  extraReducers: {
-    [membershipsThunk.fetchMembership.pending]: state => {
-      state.status = 'loading';
-    },
-    [membershipsThunk.fetchMembership.fulfilled]: (
-      state,
-      { payload }
-    ) => {
-      state.payload = payload.data;
-      state.status = 'success';
-    },
-    [membershipsThunk.fetchMembership.rejected]: (
-      state,
-      { error }
-    ) => {
-      state.status = 'failed';
-      state.error = error;
-    }
+  extraReducers: builder => {
+    builder.addCase(
+      membershipsThunk.fetchMembership.pending,
+      state => {
+        state.status = 'loading';
+      }
+    ),
+      builder.addCase(
+        membershipsThunk.fetchMembership.fulfilled,
+        (state, { payload }) => {
+          state.payload = payload.data;
+          state.status = 'success';
+        }
+      ),
+      builder.addCase(
+        membershipsThunk.fetchMembership.rejected,
+        (state, { error }) => {
+          state.status = 'failed';
+          state.error = error;
+        }
+      );
   }
 });
 
 // 2. END ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-export default fetchMembershipSlice;
+export default fetchMembershipSlice.reducer;
 // END OF FILE #################################################################
