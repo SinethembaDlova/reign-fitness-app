@@ -2,7 +2,7 @@
 
 // 1. DEPENDENCIES +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 import React, { Fragment, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { connect } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import Button from '../../components/Buttons/Button';
 import Container from '../../components/Container';
@@ -13,29 +13,35 @@ import { ButtonCointainer } from './index.style';
 
 // 2. COMPONENT ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-const Memberships = () => {
+const Memberships = ({ fetchMemberships, memberships, status }) => {
   // 2.1. FUNCTIONS ............................................................
 
   const navigate = useNavigate();
   const routeChange = path => {
     navigate(path);
   };
-  // const tableData = data => {
-  //   return data.map(item => ({
-  //     first_name: item.first_name,
-  //     last_name: item.last_name,
-  //     contract_type: item.contract_type,
-  //     is_active: item.is_active ? 'Active' : 'Inactive',
-  //     actions: (
-  //       <Link to={`/memberships/${item.id}`}> View Membership </Link>
-  //     )
-  //   }));
-  // };
 
-  const dispatch = useDispatch();
+  if (status === 'success') {
+    console.log('STATUS: ', status);
+    console.log('Data: ', memberships);
+  }
+
+  const tableData = data => {
+    return data.map(item => ({
+      first_name: item.first_name,
+      last_name: item.last_name,
+      email: item.email,
+      contract_type: item.contract_type,
+      is_active: item.is_active ? 'Active' : 'Inactive',
+      actions: (
+        <Link to={`/memberships/${item.id}`}> View Membership </Link>
+      )
+    }));
+  };
+
   useEffect(() => {
-    dispatch(membershipsThunk.fetchMemberships());
-  }, [dispatch]);
+    fetchMemberships();
+  }, [fetchMemberships]);
 
   // 2.1. END ..................................................................
 
@@ -61,34 +67,7 @@ const Memberships = () => {
             'Status',
             'Action'
           ]}
-          data={[
-            {
-              first_name: 'Sinethemba',
-              last_name: 'Dlova',
-              email: 'dSinethemba@gmail.com',
-              type: 'Student',
-              active: 'Active',
-              actions: (
-                <Link to="/memberships/1024232023432">
-                  {' '}
-                  View Membership{' '}
-                </Link>
-              )
-            },
-            {
-              first_name: 'Dame',
-              last_name: 'Dash',
-              email: 'damedashpunk@gmail.com',
-              type: 'Reigner',
-              active: 'Inactive',
-              actions: (
-                <Link to="/memberships/14342023432">
-                  {' '}
-                  View Membership{' '}
-                </Link>
-              )
-            }
-          ]}
+          data={tableData(memberships.data)}
         >
         </Table>
       </Container>
@@ -111,24 +90,25 @@ const Memberships = () => {
 
 // 4.1. MAP STATE TO PROPS .....................................................
 
-// const mapProps = state => ({
-//   memberships: state.memberships.data
-// });
+const mapStateToProps = state => ({
+  memberships: state.memberships.payload,
+  status: state.memberships.status
+});
 
 // 4.1. END ....................................................................
 
 // 4.2. MAP DISPATCH TO PROPS ..................................................
 
-// const mapDispatchToProps = dispatch => {
-//   return {
-//     fetchMemberships: () =>
-//       dispatch(membershipsThunk.fetchMemberships())
-//   };
-// };
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchMemberships: () =>
+      dispatch(membershipsThunk.fetchMemberships())
+  };
+};
 
 // 4.2. END ....................................................................
 // 4. END ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-export default Memberships;
+export default connect (mapStateToProps, mapDispatchToProps)(Memberships);
 
 // END OF FILE #################################################################
