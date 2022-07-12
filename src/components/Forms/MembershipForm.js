@@ -11,7 +11,7 @@ import { FormContainer } from './index.style';
 
 // 2. COMPONENT ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-const MembershipForm = () => {
+const MembershipForm = ({ data }) => {
   // 2.1. FUNCTIONS ............................................................
   // 2.1. END ..................................................................
 
@@ -25,7 +25,7 @@ const MembershipForm = () => {
             name="first_name"
             type="text"
             handleChange={() => console.log('Changings first name')}
-            value="Sinethemba"
+            value={data.first_name}
             label="First Name"
             required
           />
@@ -33,7 +33,7 @@ const MembershipForm = () => {
             name="last_name"
             type="text"
             handleChange={() => console.log('Changings first name')}
-            value="Dlova"
+            value={data.last_name}
             label="Last Name"
             required
           />
@@ -43,7 +43,7 @@ const MembershipForm = () => {
             name="phone_number"
             type="text"
             handleChange={() => console.log('Changings first name')}
-            value="0811232193"
+            value={data.phone_number}
             label="Phone Number"
             required
           />
@@ -51,7 +51,7 @@ const MembershipForm = () => {
             name="email"
             type="text"
             handleChange={() => console.log('Changings first name')}
-            value="dSinethemba@gmail.com"
+            value={data.email}
             label="Email Address"
             required
           />
@@ -61,15 +61,15 @@ const MembershipForm = () => {
             name="Payment Type"
             type="text"
             handleChange={() => console.log('Changings first name')}
-            value="Card"
+            value={data.payment_type}
             label="Payment Type"
             required
           />
           <FormInput
-            name="Bank Account"
+            name="Bank Account Number"
             type="text"
             handleChange={() => console.log('Changings first name')}
-            value="923423443423"
+            value={data.bank_account_number}
             label="Bank Account"
             required
           />
@@ -79,7 +79,7 @@ const MembershipForm = () => {
             name="Contact Type"
             type="text"
             handleChange={() => console.log('Changings first name')}
-            value="Student"
+            value={data.contract_type}
             label="Contract Type"
             required
           />
@@ -87,7 +87,7 @@ const MembershipForm = () => {
             name="amount"
             type="number"
             handleChange={() => console.log('Changings first name')}
-            value="500"
+            value={data.amount}
             label="Amount"
             required
           />

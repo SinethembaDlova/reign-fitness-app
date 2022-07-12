@@ -24,9 +24,8 @@ export const PageContainer = styled.section`
   height: 100%;
   padding: 20px 80px;
   background-color: white;
-  color: black
   padding-right: 50px;
-  margin:  0% 10% 1% 10%;
+  margin: 0% 10% 1% 10%;
 `;
 
 // 3. END ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

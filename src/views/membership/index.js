@@ -1,26 +1,38 @@
 // VIEW [ MEMBERSHIP ] #########################################################
 
 // 1. DEPENDENCIES +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-import React, { Fragment, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { Fragment, useMemo, useState } from 'react';
+import { connect } from 'react-redux';
+import { useParams } from 'react-router-dom';
 import Container from '../../components/Container';
 import MembershipForm from '../../components/Forms/MembershipForm';
+import { MEMBERSHIPS } from '../../constants';
 import { membershipsThunk } from '../../redux/thunks';
 // 1. END ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 // 2. COMPONENT ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-const Membership = () => {
+const Membership = ({ fetchMembership, membership, status }) => {
+  // 2.1. STATE ................................................................
+  const id = useParams();
+  const [membershipData, initializeMembership] = useState(
+    MEMBERSHIPS.formData
+  );
+
+  // 2.1. END ..................................................................
+
   // 2.1. FUNCTIONS ............................................................
 
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(
-      membershipsThunk.fetchMembership(
-        '76e6e5e6-3e64-45a9-b522-51e8f3224c7e'
-      )
-    );
-  }, [dispatch]);
+  if (status === 'success') {
+    console.log('STATUS: ', status);
+    console.log('DATA: ', membership);
+  }
+
+  useMemo(() => {
+    fetchMembership(id).then(() => {
+      initializeMembership(membership.data[0]);
+    });
+  }, [fetchMembership, id, membership]);
 
   // 2.1. END ..................................................................
 
@@ -29,7 +41,7 @@ const Membership = () => {
     <Fragment>
       <h1>Membership</h1>
       <Container>
-        <MembershipForm />
+        <MembershipForm data={membershipData} />
       </Container>
     </Fragment>
   );
@@ -49,24 +61,28 @@ const Membership = () => {
 
 // 4.1. MAP STATE TO PROPS .....................................................
 
-// const mapProps = state => ({
-//   memberships: state.memberships.data
-// });
+const mapStateToProps = state => ({
+  membership: state.membership.payload,
+  status: state.membership.status
+});
 
 // 4.1. END ....................................................................
 
 // 4.2. MAP DISPATCH TO PROPS ..................................................
 
-// const mapDispatchToProps = dispatch => {
-//   return {
-//     fetchMemberships: () =>
-//       dispatch(membershipsThunk.fetchMemberships())
-//   };
-// };
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchMembership: id =>
+      dispatch(membershipsThunk.fetchMembership(id))
+  };
+};
 
 // 4.2. END ....................................................................
 // 4. END ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-export default Membership;
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Membership);
 
 // END OF FILE #################################################################

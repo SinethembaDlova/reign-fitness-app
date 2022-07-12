@@ -8,7 +8,7 @@ module.exports = {
       {
         root: ['./src'],
         alias,
-        extensions: ['.jsx', 'js'],
+        extensions: ['.jsx', 'js']
       }
     ]
   ]

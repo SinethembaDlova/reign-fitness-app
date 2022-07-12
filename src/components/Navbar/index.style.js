@@ -21,7 +21,6 @@ export const NavbarContainer = styled.nav`
     height: 65px;
   }
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
-  font-family: 'Open Sans Condensed', sans-serif;
   font-weight: bold;
   border-radius: 2px;
   margin-bottom: 1%;

@@ -14,17 +14,21 @@ import { ButtonCointainer } from './index.style';
 // 2. COMPONENT ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 const Memberships = ({ fetchMemberships, memberships, status }) => {
+  // 2.1. STATE ................................................................
+  // 2.1. END ..................................................................
+
   // 2.1. FUNCTIONS ............................................................
+
+  useEffect(() => {
+    fetchMemberships();
+  }, [fetchMemberships]);
 
   const navigate = useNavigate();
   const routeChange = path => {
     navigate(path);
   };
 
-  if (status === 'success') {
-    console.log('STATUS: ', status);
-    console.log('Data: ', memberships);
-  }
+  if (status === 'success') console.log('STATUS: ', status);
 
   const tableData = data => {
     return data.map(item => ({
@@ -38,10 +42,6 @@ const Memberships = ({ fetchMemberships, memberships, status }) => {
       )
     }));
   };
-
-  useEffect(() => {
-    fetchMemberships();
-  }, [fetchMemberships]);
 
   // 2.1. END ..................................................................
 
@@ -67,7 +67,7 @@ const Memberships = ({ fetchMemberships, memberships, status }) => {
             'Status',
             'Action'
           ]}
-          data={tableData(memberships.data)}
+          data={tableData(memberships || [])}
         >
         </Table>
       </Container>
@@ -91,8 +91,8 @@ const Memberships = ({ fetchMemberships, memberships, status }) => {
 // 4.1. MAP STATE TO PROPS .....................................................
 
 const mapStateToProps = state => ({
-  memberships: state.memberships.payload,
-  status: state.memberships.status
+  memberships: state?.memberships?.payload?.data,
+  status: state?.memberships?.status
 });
 
 // 4.1. END ....................................................................
@@ -102,13 +102,16 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => {
   return {
     fetchMemberships: () =>
-      dispatch(membershipsThunk.fetchMemberships())
+      dispatch(membershipsThunk?.fetchMemberships())
   };
 };
 
 // 4.2. END ....................................................................
 // 4. END ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-export default connect (mapStateToProps, mapDispatchToProps)(Memberships);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Memberships);
 
 // END OF FILE #################################################################
