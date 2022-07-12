@@ -10,7 +10,8 @@ import {
 } from 'react-router-dom';
 import './App.css';
 import Navbar from './components/Navbar';
-import  Membership from './views/membership';
+import  CreateMembership from './views/membership/CreateMembership';
+import  Membership from './views/membership/Membership';
 import  Memberships from './views/memberships';
 // 1.1. END ....................................................................
 
@@ -42,14 +43,20 @@ function App () {
           exact
           path="/memberships"
           element={<Memberships />}
-        >
+          >
           </Route>
-        <Route
-          exact
-          path="/memberships/:id"
-          element={<Membership />}
-        >
-        </Route>
+          <Route
+            exact
+            path="/memberships/:id"
+            element={<Membership />}
+          >
+          </Route>
+          <Route
+            exact
+            path="/memberships/create"
+            element={<CreateMembership />}
+          >
+          </Route>
         </Routes>
       </Router>
   );

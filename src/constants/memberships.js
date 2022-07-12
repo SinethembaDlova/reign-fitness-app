@@ -3,17 +3,17 @@
 export default {
   // 1. MEMBERSHIP FORM DATA+++++++++++++++++++++++++++++++++++++++++++=++++++
   formData: {
-    id: null,
-    first_name: null,
-    last_name: null,
-    phone_number: null,
-    email: null,
-    id_number: null,
-    is_active: null,
-    payment_type: null,
-    bank_account_number: null,
-    contract_type: null,
-    amount: null
+    id: '',
+    first_name: '',
+    last_name: '',
+    phone_number: '',
+    email: '',
+    id_number: '',
+    is_active: false,
+    payment_type: '',
+    bank_account_number: '',
+    contract_type: '',
+    amount: ''
   }
   // 1. END ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 };

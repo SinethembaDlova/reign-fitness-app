@@ -1,7 +1,7 @@
 // CONTAINER ###################################################################
 
 // 1. DEPENDENCIES +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-import React from 'react';
+import React, { useState } from 'react';
 import SaveCancelButton from '../Buttons/SaveCancelButton';
 import FormInput from '../FormInput';
 import { InputContainer } from '../FormInput/index.style';
@@ -12,7 +12,18 @@ import { FormContainer } from './index.style';
 // 2. COMPONENT ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 const MembershipForm = ({ data }) => {
+  const [membership, updateMembership] = useState(data);
+
   // 2.1. FUNCTIONS ............................................................
+  const handleChange = event => {
+    const { name, value } = event.target;
+    updateMembership(() => {
+      return {
+        ...membership,
+        [name]: value
+      };
+    });
+  };
   // 2.1. END ..................................................................
 
   // 2.2. RENDER COMPONENT .....................................................
@@ -24,16 +35,16 @@ const MembershipForm = ({ data }) => {
           <FormInput
             name="first_name"
             type="text"
-            handleChange={() => console.log('Changings first name')}
-            value={data.first_name}
+            handleChange={e => handleChange(e)}
+            value={membership.first_name}
             label="First Name"
             required
           />
           <FormInput
             name="last_name"
             type="text"
-            handleChange={() => console.log('Changings first name')}
-            value={data.last_name}
+            handleChange={e => handleChange(e)}
+            value={membership.last_name}
             label="Last Name"
             required
           />
@@ -42,52 +53,52 @@ const MembershipForm = ({ data }) => {
           <FormInput
             name="phone_number"
             type="text"
-            handleChange={() => console.log('Changings first name')}
-            value={data.phone_number}
+            handleChange={e => handleChange(e)}
+            value={membership.phone_number}
             label="Phone Number"
             required
           />
           <FormInput
             name="email"
             type="text"
-            handleChange={() => console.log('Changings first name')}
-            value={data.email}
+            handleChange={e => handleChange(e)}
+            value={membership.email}
             label="Email Address"
             required
           />
         </InputContainer>
         <InputContainer>
           <FormInput
-            name="Payment Type"
+            name="payment_type"
             type="text"
-            handleChange={() => console.log('Changings first name')}
-            value={data.payment_type}
+            handleChange={e => handleChange(e)}
+            value={membership.payment_type}
             label="Payment Type"
             required
           />
           <FormInput
-            name="Bank Account Number"
+            name="bank_account_number"
             type="text"
-            handleChange={() => console.log('Changings first name')}
-            value={data.bank_account_number}
+            handleChange={e => handleChange(e)}
+            value={membership.bank_account_number}
             label="Bank Account"
             required
           />
         </InputContainer>
         <InputContainer>
           <FormInput
-            name="Contact Type"
+            name="contract_type"
             type="text"
-            handleChange={() => console.log('Changings first name')}
-            value={data.contract_type}
+            handleChange={e => handleChange(e)}
+            value={membership.contract_type}
             label="Contract Type"
             required
           />
           <FormInput
             name="amount"
             type="number"
-            handleChange={() => console.log('Changings first name')}
-            value={data.amount}
+            handleChange={e => handleChange(e)}
+            value={membership.amount}
             label="Amount"
             required
           />

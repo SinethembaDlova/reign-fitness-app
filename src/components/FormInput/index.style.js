@@ -48,11 +48,9 @@ export const FormInputContainer = styled.input`
   border-radius: 0;
   border-bottom: 2px solid #009879;
   margin: 25px 0;
-  &:hover {
-    border: 2px solid #009879;
-  }
   &:focus {
     outline: none;
+    border: 2px solid #009879;
   }
   &:focus ~ label {
     ${shrinkLabelStyles}
