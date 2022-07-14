@@ -42,6 +42,26 @@ const fetchMembershipSlice = createSlice({
           state.status = 'failed';
           state.error = error;
         }
+      ),
+      builder.addCase(
+        membershipsThunk.createMembership.pending,
+        state => {
+          state.status = 'loading';
+        }
+      ),
+      builder.addCase(
+        membershipsThunk.createMembership.fulfilled,
+        (state, { payload }) => {
+          state.payload = payload.data;
+          state.status = 'success';
+        }
+      ),
+      builder.addCase(
+        membershipsThunk.createMembership.rejected,
+        (state, { error }) => {
+          state.status = 'failed';
+          state.error = error;
+        }
       );
   }
 });

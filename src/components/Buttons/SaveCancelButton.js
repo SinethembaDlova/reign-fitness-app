@@ -19,9 +19,7 @@ const SaveCancelButton = ({ handleCancelling }) => {
       <Button type="button" onClick={() => handleCancelling()}>
         Cancel
       </Button>
-      <Button type="submit">
-        Save
-      </Button>
+      <Button type="submit">Save</Button>
     </ButtonsContainer>
   );
 

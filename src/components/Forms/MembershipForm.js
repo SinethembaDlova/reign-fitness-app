@@ -28,7 +28,7 @@ const MembershipForm = ({ data, handleSubmitting, children }) => {
   // 2.2. RENDER COMPONENT .....................................................
 
   return (
-    <form onSubmit={(event) => handleSubmitting(event)}>
+    <form onSubmit={event => handleSubmitting(event)}>
       <FormContainer>
         <InputContainer>
           <FormInput

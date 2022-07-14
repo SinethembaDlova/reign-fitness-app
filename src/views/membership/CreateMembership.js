@@ -8,7 +8,7 @@ import SaveCancelButton from '../../components/Buttons/SaveCancelButton';
 import Container from '../../components/Container';
 import MembershipForm from '../../components/Forms/MembershipForm';
 import { MEMBERSHIPS } from '../../constants';
-// import { membershipsThunk } from '../../redux/thunks';
+import { membershipsThunk } from '../../redux/thunks';
 // 1. END ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 // 2. COMPONENT ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -44,16 +44,13 @@ const CreateMembership = ({
       <Container>
         <MembershipForm
           data={membershipData}
-          handleSubmitting={(event) => {
+          handleSubmitting={event => {
             event.preventDefault();
             console.log('Submitting Data: ', membershipData);
             createMembership(membershipData);
-          }
-        }
+          }}
         >
-          <SaveCancelButton
-            handleCancelling={() =>  navigate(-1)}
-          />
+          <SaveCancelButton handleCancelling={() => navigate(-1)} />
         </MembershipForm>
       </Container>
     </Fragment>
@@ -83,9 +80,9 @@ const mapStateToProps = state => ({
 
 // 4.2. MAP DISPATCH TO PROPS ..................................................
 
-const mapDispatchToProps = () => {
+const mapDispatchToProps = dispatch => {
   return {
-    createMembership: body => console.log('disapatching: ', body)
+    createMembership: body => dispatch(membershipsThunk.createMembership(body))
   };
 };
 
