@@ -1,28 +1,27 @@
-// SAVE CANCEL BUTTON ##########################################################
+// EDIT CANCEL BUTTON ##########################################################
 
 // 1. DEPENDENCIES +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 import React from 'react';
 import Button from './Button';
+import SaveCancelButton from './SaveCancelButton';
 import { ButtonsContainer } from './index.style';
 // 1. END ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 // 2. COMPONENT ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-const SaveCancelButton = ({ handleCancelling }) => {
+const SaveCancelButton = ({ handleSubmitting }) => {
   // 2.1. FUNCTIONS ............................................................
   // 2.1. END ..................................................................
 
   // 2.2. RENDER COMPONENT .....................................................
 
   return (
-    <ButtonsContainer>
-      <Button type="button" onClick={() => handleCancelling()}>
-        Cancel
-      </Button>
-      <Button type="submit">
-        Save
-      </Button>
-    </ButtonsContainer>
+    <div>
+      <ButtonsContainer>
+        <Button type="button">Edit</Button>
+      </ButtonsContainer>
+      <SaveCancelButton />
+    </div>
   );
 
   // 2.2. END ..................................................................

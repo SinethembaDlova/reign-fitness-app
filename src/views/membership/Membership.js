@@ -1,7 +1,7 @@
 // VIEW [ MEMBERSHIP ] #########################################################
 
 // 1. DEPENDENCIES +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-import React, { Fragment, useMemo, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import Container from '../../components/Container';
@@ -12,27 +12,17 @@ import { membershipsThunk } from '../../redux/thunks';
 
 // 2. COMPONENT ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-const Membership = ({ fetchMembership, membership, status }) => {
+const Membership = ({ fetchMembership, membership }) => {
   // 2.1. STATE ................................................................
   const id = useParams();
-  const [membershipData, initializeMembership] = useState(
-    MEMBERSHIPS.formData
-  );
+  const [membershipData] = useState(MEMBERSHIPS.formData);
 
   // 2.1. END ..................................................................
 
   // 2.1. FUNCTIONS ............................................................
-
-  if (status === 'success') {
-    console.log('STATUS: ', status);
-    console.log('DATA: ', membership);
-  }
-
-  useMemo(() => {
-    fetchMembership(id).then(() => {
-      initializeMembership(membership.data[0]);
-    });
-  }, [fetchMembership, id, membership]);
+  useEffect(() => {
+    fetchMembership(id);
+  }, [fetchMembership, id]);
 
   // 2.1. END ..................................................................
 
@@ -41,7 +31,7 @@ const Membership = ({ fetchMembership, membership, status }) => {
     <Fragment>
       <h1>Membership</h1>
       <Container>
-        <MembershipForm data={membershipData} />
+        <MembershipForm data={membership || membershipData} />
       </Container>
     </Fragment>
   );
@@ -62,8 +52,8 @@ const Membership = ({ fetchMembership, membership, status }) => {
 // 4.1. MAP STATE TO PROPS .....................................................
 
 const mapStateToProps = state => ({
-  membership: state.membership.payload,
-  status: state.membership.status
+  membership: state?.membership?.payload?.data[0],
+  status: state?.membership?.status
 });
 
 // 4.1. END ....................................................................

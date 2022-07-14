@@ -3,21 +3,28 @@
 // 1. DEPENDENCIES +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 import React, { Fragment, useState } from 'react';
 import { connect } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import SaveCancelButton from '../../components/Buttons/SaveCancelButton';
 import Container from '../../components/Container';
 import MembershipForm from '../../components/Forms/MembershipForm';
 import { MEMBERSHIPS } from '../../constants';
-import { membershipsThunk } from '../../redux/thunks';
+// import { membershipsThunk } from '../../redux/thunks';
 // 1. END ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 // 2. COMPONENT ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-const CreateMembership = ({ membership, status }) => {
+const CreateMembership = ({
+  membership,
+  status,
+  createMembership
+}) => {
   // 2.1. STATE ................................................................
   const [membershipData] = useState(MEMBERSHIPS.formData);
-
   // 2.1. END ..................................................................
 
   // 2.1. FUNCTIONS ............................................................
+
+  const navigate = useNavigate();
 
   if (status === 'success') {
     console.log('STATUS: ', status);
@@ -35,7 +42,19 @@ const CreateMembership = ({ membership, status }) => {
     <Fragment>
       <h1>Create Membership</h1>
       <Container>
-        <MembershipForm data={membershipData} />
+        <MembershipForm
+          data={membershipData}
+          handleSubmitting={(event) => {
+            event.preventDefault();
+            console.log('Submitting Data: ', membershipData);
+            createMembership(membershipData);
+          }
+        }
+        >
+          <SaveCancelButton
+            handleCancelling={() =>  navigate(-1)}
+          />
+        </MembershipForm>
       </Container>
     </Fragment>
   );
@@ -64,10 +83,9 @@ const mapStateToProps = state => ({
 
 // 4.2. MAP DISPATCH TO PROPS ..................................................
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = () => {
   return {
-    fetchMembership: id =>
-      dispatch(membershipsThunk.fetchMembership(id))
+    createMembership: body => console.log('disapatching: ', body)
   };
 };
 
