@@ -48,11 +48,14 @@ export default {
 
   // 2.3. CREATE A MEMBERSHIP ..................................................
 
-  createMembership: async (endpoint, body) => {
-    const path = `${apiUtilities.url(endpoint)}/memberships`;
+  createMembership: async (body) => {
+    const path = `${apiUtilities.url()}/memberships`;
 
     try {
+      console.log('body: ', body);
       const res = await axios.post(path, body);
+      console.log('res: ', res);
+
       return res;
     } catch (error) {
       throw new Error(error);

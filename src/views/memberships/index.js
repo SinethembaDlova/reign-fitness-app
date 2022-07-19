@@ -38,7 +38,7 @@ const Memberships = ({ fetchMemberships, memberships, status }) => {
       contract_type: item.contract_type,
       is_active: item.is_active ? 'Active' : 'Inactive',
       actions: (
-        <Link to={`/memberships/${item.id}`}> View Membership </Link>
+        <Link to={`/memberships/${item._id}`}> View Membership </Link>
       )
     }));
   };

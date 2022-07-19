@@ -1,7 +1,7 @@
 // VIEW [ CREATE MEMBERSHIP ] ##################################################
 
 // 1. DEPENDENCIES +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-import React, { Fragment, useState } from 'react';
+import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import SaveCancelButton from '../../components/Buttons/SaveCancelButton';
@@ -15,11 +15,9 @@ import { membershipsThunk } from '../../redux/thunks';
 
 const CreateMembership = ({
   membership,
-  status,
-  createMembership
+  status
 }) => {
   // 2.1. STATE ................................................................
-  const [membershipData] = useState(MEMBERSHIPS.formData);
   // 2.1. END ..................................................................
 
   // 2.1. FUNCTIONS ............................................................
@@ -43,12 +41,7 @@ const CreateMembership = ({
       <h1>Create Membership</h1>
       <Container>
         <MembershipForm
-          data={membershipData}
-          handleSubmitting={event => {
-            event.preventDefault();
-            console.log('Submitting Data: ', membershipData);
-            createMembership(membershipData);
-          }}
+          data={MEMBERSHIPS.formData}
         >
           <SaveCancelButton handleCancelling={() => navigate(-1)} />
         </MembershipForm>

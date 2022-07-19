@@ -3,7 +3,6 @@
 export default {
   // 1. MEMBERSHIP FORM DATA+++++++++++++++++++++++++++++++++++++++++++=++++++
   formData: {
-    id: '',
     first_name: '',
     last_name: '',
     phone_number: '',
@@ -13,7 +12,7 @@ export default {
     payment_type: '',
     bank_account_number: '',
     contract_type: '',
-    amount: ''
+    amount: 0
   }
   // 1. END ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 };

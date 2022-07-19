@@ -12,16 +12,18 @@ import { membershipsThunk } from '../../redux/thunks';
 
 // 2. COMPONENT ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-const Membership = ({ fetchMembership, membership }) => {
+const Membership = ({ fetchMembership }) => {
   // 2.1. STATE ................................................................
   const id = useParams();
-  const [membershipData] = useState(MEMBERSHIPS.formData);
+  const [membershipData, updateMembershipData] = useState(MEMBERSHIPS.formData);
 
   // 2.1. END ..................................................................
 
   // 2.1. FUNCTIONS ............................................................
   useEffect(() => {
-    fetchMembership(id);
+    fetchMembership(id).then((membership) =>{
+      updateMembershipData(membership?.payload?.data?.data[0]);
+    });
   }, [fetchMembership, id]);
 
   // 2.1. END ..................................................................
@@ -31,7 +33,7 @@ const Membership = ({ fetchMembership, membership }) => {
     <Fragment>
       <h1>Membership</h1>
       <Container>
-        <MembershipForm data={membership || membershipData} />
+        <MembershipForm data={ membershipData } />
       </Container>
     </Fragment>
   );
@@ -63,7 +65,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => {
   return {
     fetchMembership: id =>
-      dispatch(membershipsThunk.fetchMembership(id))
+    dispatch(membershipsThunk.fetchMembership(id))
   };
 };
 
