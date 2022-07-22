@@ -48,7 +48,7 @@ export default {
 
   // 2.3. CREATE A MEMBERSHIP ..................................................
 
-  createMembership: async (body) => {
+  createMembership: async body => {
     const path = `${apiUtilities.url()}/memberships`;
 
     try {

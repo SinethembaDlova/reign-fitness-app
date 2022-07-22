@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import Button from '../../components/Buttons/Button';
 import Container from '../../components/Container';
+import Loader from '../../components/Loader';
 import Table from '../../components/Table';
 import { membershipsThunk } from '../../redux/thunks';
 import { ButtonCointainer } from './index.style';
@@ -28,7 +29,7 @@ const Memberships = ({ fetchMemberships, memberships, status }) => {
     navigate(path);
   };
 
-  if (status === 'success') console.log('STATUS: ', status);
+  if (status === 'loading') return <Loader />;
 
   const tableData = data => {
     return data.map(item => ({
@@ -38,7 +39,10 @@ const Memberships = ({ fetchMemberships, memberships, status }) => {
       contract_type: item.contract_type,
       is_active: item.is_active ? 'Active' : 'Inactive',
       actions: (
-        <Link to={`/memberships/${item._id}`}> View Membership </Link>
+        <Link to={`/memberships/${item._id}`}>
+          {' '}
+          View Membership{' '}
+        </Link>
       )
     }));
   };

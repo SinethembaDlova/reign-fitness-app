@@ -7,16 +7,14 @@ import { useNavigate } from 'react-router-dom';
 import SaveCancelButton from '../../components/Buttons/SaveCancelButton';
 import Container from '../../components/Container';
 import MembershipForm from '../../components/Forms/MembershipForm';
+import Loader from '../../components/Loader';
 import { MEMBERSHIPS } from '../../constants';
 import { membershipsThunk } from '../../redux/thunks';
 // 1. END ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 // 2. COMPONENT ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-const CreateMembership = ({
-  membership,
-  status
-}) => {
+const CreateMembership = ({ status }) => {
   // 2.1. STATE ................................................................
   // 2.1. END ..................................................................
 
@@ -24,14 +22,7 @@ const CreateMembership = ({
 
   const navigate = useNavigate();
 
-  if (status === 'success') {
-    console.log('STATUS: ', status);
-    console.log('DATA: ', membership);
-  }
-
-  //   useEffect(() => {
-  //     initializeMembership(membership.data[0]);
-  //   }, [membership]);
+  if (status === 'loading') return <Loader />;
 
   // 2.1. END ..................................................................
 
@@ -40,9 +31,7 @@ const CreateMembership = ({
     <Fragment>
       <h1>Create Membership</h1>
       <Container>
-        <MembershipForm
-          data={MEMBERSHIPS.formData}
-        >
+        <MembershipForm data={MEMBERSHIPS.formData}>
           <SaveCancelButton handleCancelling={() => navigate(-1)} />
         </MembershipForm>
       </Container>
@@ -75,7 +64,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
   return {
-    createMembership: body => dispatch(membershipsThunk.createMembership(body))
+    createMembership: body =>
+      dispatch(membershipsThunk.createMembership(body))
   };
 };
 

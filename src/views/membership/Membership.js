@@ -6,25 +6,30 @@ import { connect } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import Container from '../../components/Container';
 import MembershipForm from '../../components/Forms/MembershipForm';
+import Loader from '../../components/Loader';
 import { MEMBERSHIPS } from '../../constants';
 import { membershipsThunk } from '../../redux/thunks';
 // 1. END ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 // 2. COMPONENT ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-const Membership = ({ fetchMembership }) => {
+const Membership = ({ fetchMembership, status }) => {
   // 2.1. STATE ................................................................
   const id = useParams();
-  const [membershipData, updateMembershipData] = useState(MEMBERSHIPS.formData);
+  const [membershipData, updateMembershipData] = useState(
+    MEMBERSHIPS.formData
+  );
 
   // 2.1. END ..................................................................
 
   // 2.1. FUNCTIONS ............................................................
   useEffect(() => {
-    fetchMembership(id).then((membership) =>{
+    fetchMembership(id).then(membership => {
       updateMembershipData(membership?.payload?.data?.data[0]);
     });
   }, [fetchMembership, id]);
+
+  if (status === 'loading') return <Loader />;
 
   // 2.1. END ..................................................................
 
@@ -33,7 +38,7 @@ const Membership = ({ fetchMembership }) => {
     <Fragment>
       <h1>Membership</h1>
       <Container>
-        <MembershipForm data={ membershipData } />
+        <MembershipForm data={membershipData} />
       </Container>
     </Fragment>
   );
@@ -65,7 +70,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => {
   return {
     fetchMembership: id =>
-    dispatch(membershipsThunk.fetchMembership(id))
+      dispatch(membershipsThunk.fetchMembership(id))
   };
 };
 

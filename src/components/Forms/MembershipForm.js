@@ -30,11 +30,15 @@ const MembershipForm = ({ data, createMembership, children }) => {
   // 2.2. RENDER COMPONENT .....................................................
 
   return (
-    <form onSubmit={event => {
-      event.preventDefault();
-      const fixedMembership = { ...membership, amount: parseInt(membership.amount) };
-      createMembership(fixedMembership);
-    }}
+    <form
+      onSubmit={event => {
+        event.preventDefault();
+        const fixedMembership = {
+          ...membership,
+          amount: parseInt(membership.amount)
+        };
+        createMembership(fixedMembership);
+      }}
     >
       <FormContainer>
         <InputContainer>
@@ -146,7 +150,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
   return {
-    createMembership: body => dispatch(membershipsThunk.createMembership(body))
+    createMembership: body =>
+      dispatch(membershipsThunk.createMembership(body))
   };
 };
 
